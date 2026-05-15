@@ -6,10 +6,8 @@ class TestLoginCourier():
 
     @allure.title('Тест на успешное логирование курьера')
     @allure.description('Проверяем, что при корректных данных API возвращает 200 и {"id": id}')
-    def test_login_courier(self):
-        account_data = GenerateData.generate_courier_login_password()
-        create_response = ScooterMethods.create_courier(account_data)
-        assert create_response.status_code == 201, "Курьер не был создан перед авторизацией"
+    def test_login_courier(self, register_and_clean_courier):
+        account_data = register_and_clean_courier
         login_body = {
             "login": account_data["login"],
             "password": account_data["password"]

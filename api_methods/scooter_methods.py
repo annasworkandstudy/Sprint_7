@@ -23,3 +23,8 @@ class ScooterMethods:
     @allure.step('Получение списка заказов')
     def get_list_order():
         return requests.get(url=URL.LIST_ORDER)
+    
+    @staticmethod
+    @allure.step('Удаление курьера')
+    def delete_courier(courier_id):
+        return requests.delete(url=f"{URL.CREATE_COURIER}/{courier_id}")
